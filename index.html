@@ -1,6 +1,11 @@
-<!-- markthehub.com · despliegue automático desde GitHub -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Mark — the creative hub for the new renaissance of thought.">
 <title>Mark the Hub</title>
-<meta name="claude:viewport-fit-sides" content="cover">
+
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@500;600&display=swap">
 <style>
 /* Layout: the deck's alternating full-bleed black / white / orange bands, condensed uppercase display, generous scale. Single-theme by brand decision (black, white, orange); dark and light bands are the design itself. */
@@ -17,8 +22,8 @@
   --display:"Bebas Neue","Barlow Condensed","Oswald",Impact,sans-serif;
   --cond:"Barlow Condensed","Oswald",sans-serif;
   --body:"Barlow","Helvetica Neue",Arial,sans-serif;
-  --gutter-l:max(16px,env(safe-area-inset-left,0px));
-  --gutter-r:max(16px,env(safe-area-inset-right,0px));
+  --gutter-l:16px;
+  --gutter-r:16px;
   --maxw:1240px;
   color-scheme:dark;
 }
@@ -26,7 +31,7 @@
 html{scroll-behavior:smooth}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 body{margin:0;background:var(--black);color:var(--ink-on-black);font-family:var(--body);font-size:17px;line-height:1.5;-webkit-font-smoothing:antialiased}
-body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--black)}
+
 img{max-width:100%;display:block}
 a{color:inherit}
 h1,h2,h3{font-family:var(--display);font-weight:400;letter-spacing:.01em;line-height:.92;margin:0;text-wrap:balance}
@@ -50,7 +55,7 @@ p{margin:0}
 .white .mute{color:var(--mute-on-white)}
 
 /* nav */
-.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:var(--black);border-bottom:1px solid var(--rule-on-black);padding-left:var(--gutter-l);padding-right:var(--gutter-r)}
+.nav{position:sticky;top:0;z-index:9;background:var(--black);border-bottom:1px solid var(--rule-on-black);padding-left:var(--gutter-l);padding-right:var(--gutter-r)}
 .nav .wrap{display:flex;align-items:center;justify-content:space-between;height:72px}
 .nav>.wrap>a{flex-shrink:0;display:block}
 .nav img{height:30px;width:auto;flex-shrink:0}
@@ -82,10 +87,10 @@ p{margin:0}
 .case .meta{padding:16px 0 0}
 /* video lightbox */
 .lb[hidden]{display:none}
-.lb{position:fixed;inset:0;z-index:50;background:rgba(10,10,11,.94);display:flex;align-items:center;justify-content:center;padding:max(16px,env(safe-area-inset-left,0px))}
+.lb{position:fixed;inset:0;z-index:50;background:rgba(10,10,11,.94);display:flex;align-items:center;justify-content:center;padding:16px}
 .lb .frame{width:min(1120px,100%);aspect-ratio:16/9;background:#000;max-width:100%}
 .lb iframe{width:100%;height:100%;border:0;display:block}
-.lb .close{position:absolute;top:calc(14px + env(safe-area-inset-top,0px));right:max(16px,env(safe-area-inset-right,0px));background:none;border:1px solid var(--rule-on-black);color:var(--ink-on-black);font-family:var(--cond);font-weight:600;letter-spacing:.14em;text-transform:uppercase;font-size:12px;padding:10px 14px;cursor:pointer}
+.lb .close{position:absolute;top:14px;right:16px;background:none;border:1px solid var(--rule-on-black);color:var(--ink-on-black);font-family:var(--cond);font-weight:600;letter-spacing:.14em;text-transform:uppercase;font-size:12px;padding:10px 14px;cursor:pointer}
 .lb .close:hover,.lb .close:focus-visible{border-color:var(--orange);color:var(--orange);outline:none}
 .case .client{font-family:var(--cond);font-weight:600;text-transform:uppercase;letter-spacing:.14em;font-size:12px;color:var(--orange)}
 .case .title{font-family:var(--display);font-size:clamp(30px,3vw,44px);line-height:.95;margin-top:6px}
@@ -181,6 +186,9 @@ p{margin:0}
 .foot .wrap{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;font-family:var(--cond);font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--mute-on-black)}
 .foot img{height:26px;width:auto}
 </style>
+</head>
+<body>
+
 
 <nav class="nav" aria-label="Main">
   <div class="wrap">
@@ -392,3 +400,6 @@ p{margin:0}
 })();
 </script>
 
+
+</body>
+</html>
