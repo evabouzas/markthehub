@@ -1,0 +1,393 @@
+<title>Mark the Hub</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@500;600&display=swap">
+<style>
+/* Layout: the deck's alternating full-bleed black / white / orange bands, condensed uppercase display, generous scale. Single-theme by brand decision (black, white, orange); dark and light bands are the design itself. */
+:root{
+  --black:#121214;
+  --white:#f6f5f2;
+  --orange:#f23a02;
+  --ink-on-black:#f6f5f2;
+  --ink-on-white:#121214;
+  --mute-on-black:rgba(246,245,242,.62);
+  --mute-on-white:rgba(18,18,20,.6);
+  --rule-on-black:rgba(246,245,242,.18);
+  --rule-on-white:rgba(18,18,20,.14);
+  --display:"Bebas Neue","Barlow Condensed","Oswald",Impact,sans-serif;
+  --cond:"Barlow Condensed","Oswald",sans-serif;
+  --body:"Barlow","Helvetica Neue",Arial,sans-serif;
+  --gutter-l:max(16px,env(safe-area-inset-left,0px));
+  --gutter-r:max(16px,env(safe-area-inset-right,0px));
+  --maxw:1240px;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--black);color:var(--ink-on-black);font-family:var(--body);font-size:17px;line-height:1.5;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--black)}
+img{max-width:100%;display:block}
+a{color:inherit}
+h1,h2,h3{font-family:var(--display);font-weight:400;letter-spacing:.01em;line-height:.92;margin:0;text-wrap:balance}
+p{margin:0}
+.band{padding-left:var(--gutter-l);padding-right:var(--gutter-r);padding-block:clamp(56px,9vw,120px)}
+.band.black{background:var(--black);color:var(--ink-on-black)}
+.band.white{background:var(--white);color:var(--ink-on-white)}
+.band.orange{background:var(--orange);color:var(--ink-on-black)}
+.wrap{max-width:var(--maxw);margin:0 auto;min-width:0}
+.eyebrow{font-family:var(--cond);font-weight:600;text-transform:uppercase;letter-spacing:.14em;font-size:13px;display:flex;align-items:center;gap:12px;margin-bottom:28px}
+.eyebrow::before{content:"";width:34px;height:2px;background:currentColor}
+.black .eyebrow{color:var(--orange)}
+.white .eyebrow{color:var(--orange)}
+.orange .eyebrow{color:var(--ink-on-black)}
+.h-xxl{font-size:clamp(64px,12vw,150px)}
+.h-xl{font-size:clamp(48px,7vw,96px)}
+.h-l{font-size:clamp(38px,4.8vw,64px)}
+.h-m{font-size:clamp(28px,3vw,40px)}
+.lead{font-size:clamp(18px,1.6vw,22px);max-width:36em}
+.mute{color:var(--mute-on-black)}
+.white .mute{color:var(--mute-on-white)}
+
+/* nav */
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:var(--black);border-bottom:1px solid var(--rule-on-black);padding-left:var(--gutter-l);padding-right:var(--gutter-r)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:72px}
+.nav>.wrap>a{flex-shrink:0;display:block}
+.nav img{height:30px;width:auto;flex-shrink:0}
+.nav ul{list-style:none;margin:0;padding:0;display:flex;gap:28px;font-family:var(--cond);font-weight:600;text-transform:uppercase;letter-spacing:.12em;font-size:13px}
+.nav a{text-decoration:none}
+.nav a:hover,.nav a:focus-visible{color:var(--orange);outline:none}
+@media (max-width:760px){.nav{position:static}.nav .wrap{height:84px}}
+@media (max-width:640px){.nav ul{gap:14px;font-size:11px;letter-spacing:.08em}.nav img{height:28px}}
+@media (max-width:520px){.nav li:nth-child(3),.nav li:nth-child(4){display:none}}
+
+/* hero: logo and claim on the white panel */
+.hero{display:block}
+/* opening frame: brand + claim, sized so the next band shows under the fold */
+.hero .left{background:var(--white);color:var(--ink-on-white);padding-left:var(--gutter-l);padding-right:var(--gutter-r);padding-block:32px clamp(32px,5vh,64px);min-height:calc(86vh - 72px);min-height:calc(86svh - 72px);display:flex;flex-direction:column;align-items:center;text-align:center}
+.hero .logobox{flex:1;display:flex;align-items:center;justify-content:center;width:100%;min-height:0}
+.hero .herologo{width:min(72%,720px);max-height:44vh;max-height:44svh;height:auto;object-fit:contain}
+.hero .claim{font-family:var(--display);font-size:clamp(16px,2.5vw,36px);line-height:1;color:var(--orange);max-width:none;white-space:nowrap;letter-spacing:.02em}
+@media (max-width:760px){.hero .left{min-height:0;height:calc(42vh - 84px);height:calc(42svh - 84px);padding-block:10px 14px;justify-content:center;gap:48px}.hero .logobox{flex:0 0 auto}.hero .herologo{width:min(62%,280px);max-height:15vh;max-height:15svh}.hero .claim{font-size:clamp(14px,4.8vw,22px);max-width:100%;overflow:hidden}}
+/* work grid: image full, caption below, two equal columns */
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:28px 18px;margin-top:36px}
+@media (max-width:560px){.grid{grid-template-columns:1fr}}
+.case{position:relative;min-width:0;display:block;text-decoration:none;color:var(--ink-on-black)}
+.case .pic{position:relative;overflow:hidden;background:#1d1d20;aspect-ratio:16/9;max-width:100%}
+.case img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;transition:transform .6s ease,filter .6s ease;filter:grayscale(1)}
+.case:hover img,.case:focus-visible img{filter:grayscale(0);transform:scale(1.03)}
+@media (prefers-reduced-motion:reduce){.case img{transition:none}.case:hover img{transform:none}}
+.case .pic .play{position:absolute;left:16px;bottom:14px;display:inline-flex;align-items:center;gap:8px;font-family:var(--cond);font-weight:600;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-on-black);background:rgba(18,18,20,.72);padding:7px 10px}
+.case .pic .play::before{content:"";width:0;height:0;border-left:9px solid var(--orange);border-top:6px solid transparent;border-bottom:6px solid transparent}
+.case .meta{padding:16px 0 0}
+/* video lightbox */
+.lb[hidden]{display:none}
+.lb{position:fixed;inset:0;z-index:50;background:rgba(10,10,11,.94);display:flex;align-items:center;justify-content:center;padding:max(16px,env(safe-area-inset-left,0px))}
+.lb .frame{width:min(1120px,100%);aspect-ratio:16/9;background:#000;max-width:100%}
+.lb iframe{width:100%;height:100%;border:0;display:block}
+.lb .close{position:absolute;top:calc(14px + env(safe-area-inset-top,0px));right:max(16px,env(safe-area-inset-right,0px));background:none;border:1px solid var(--rule-on-black);color:var(--ink-on-black);font-family:var(--cond);font-weight:600;letter-spacing:.14em;text-transform:uppercase;font-size:12px;padding:10px 14px;cursor:pointer}
+.lb .close:hover,.lb .close:focus-visible{border-color:var(--orange);color:var(--orange);outline:none}
+.case .client{font-family:var(--cond);font-weight:600;text-transform:uppercase;letter-spacing:.14em;font-size:12px;color:var(--orange)}
+.case .title{font-family:var(--display);font-size:clamp(30px,3vw,44px);line-height:.95;margin-top:6px}
+.case .fact{font-size:14px;color:var(--mute-on-black);margin-top:8px;max-width:34em}
+.more{display:inline-flex;align-items:center;gap:12px;margin-top:36px;font-family:var(--cond);font-weight:600;text-transform:uppercase;letter-spacing:.14em;font-size:13px;text-decoration:none;border-bottom:2px solid var(--orange);padding-bottom:4px}
+.more:hover,.more:focus-visible{color:var(--orange);outline:none}
+
+/* why now */
+.two{display:grid;grid-template-columns:5fr 7fr;gap:48px;align-items:start}
+@media (max-width:820px){.two{grid-template-columns:1fr;gap:28px}}
+.quote{font-family:var(--display);font-size:clamp(30px,3.6vw,52px);line-height:.98;max-width:16em}
+.quote cite{display:block;font-family:var(--cond);font-style:normal;font-weight:600;letter-spacing:.14em;text-transform:uppercase;font-size:13px;margin-top:18px;color:var(--orange)}
+.white .quote cite{color:var(--orange)}
+
+/* manifesto */
+.manifesto{display:grid;grid-template-columns:1fr 1fr;gap:28px 56px;margin-top:40px}
+@media (max-width:820px){.manifesto{grid-template-columns:1fr}}
+.manifesto p{font-family:var(--cond);font-weight:500;font-size:clamp(22px,2.2vw,30px);line-height:1.2;text-transform:uppercase;max-width:22em}
+.manifesto strong{font-weight:600;color:var(--orange)}
+.orange .manifesto strong{color:var(--ink-on-black)}
+.orange .manifesto p{font-size:clamp(18px,1.8vw,24px)}
+.orange .passage{font-family:var(--display);font-size:clamp(30px,3.6vw,52px);text-transform:none;line-height:.98}
+
+/* re-human framework: a dial, drawn, no copy (the deck numbers the six steps, so the order is kept) */
+.fw{position:relative;aspect-ratio:1;max-width:680px;margin:48px auto 0;width:100%;container-type:inline-size}
+.fw .orbit{position:absolute;inset:12%;border-radius:50%;border:2px dashed rgba(18,18,20,.3)}
+.fw .core{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:32%;height:32%;box-sizing:border-box;border-radius:50%;border:3px solid var(--orange);background:var(--white);display:flex;align-items:center;justify-content:center;text-align:center;font-family:var(--display);font-size:5.6cqw;line-height:.95;color:var(--ink-on-white)}
+.fw .core::before{content:"";position:absolute;inset:-9%;border-radius:50%;border:2px dotted var(--orange);opacity:.55}
+.fw .node{position:absolute;width:26%;height:26%;box-sizing:border-box;border-radius:50%;background:var(--white);border:2px solid var(--ink-on-white);transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:9%;font-family:var(--cond);font-weight:600;text-transform:uppercase;letter-spacing:.04em;font-size:2.3cqw;line-height:1.12;color:var(--ink-on-white)}
+.fw .node .n{color:var(--orange);letter-spacing:.14em;font-size:1.9cqw;margin-bottom:.5em;line-height:1}
+.fw .n1{left:50%;top:12%}.fw .n2{left:83%;top:31%}.fw .n3{left:83%;top:69%}.fw .n4{left:50%;top:88%}.fw .n5{left:17%;top:69%}.fw .n6{left:17%;top:31%}
+@media (max-width:560px){
+  .fw{aspect-ratio:auto;display:flex;flex-direction:column;gap:10px;max-width:none}
+  .fw .orbit{display:none}
+  .fw .core{display:none}
+  .fw .node{position:static;transform:none;width:auto;aspect-ratio:auto;border-radius:0;border:0;border-bottom:1px solid var(--rule-on-white);flex-direction:row;justify-content:flex-start;gap:14px;padding:12px 0;text-align:left;font-size:15px}
+  .fw .node .n{margin:0}
+}
+
+/* why mark */
+.origin{display:grid;grid-template-columns:5fr 7fr;gap:48px;align-items:center}
+@media (max-width:820px){.origin{grid-template-columns:1fr;gap:28px}}
+.origin img{width:min(60%,260px);height:auto}
+.passage{font-family:var(--cond);font-weight:500;text-transform:uppercase;font-size:clamp(20px,2.2vw,30px);line-height:1.2;color:var(--orange);max-width:24em}
+.passage cite{display:block;font-style:normal;font-weight:600;letter-spacing:.14em;font-size:13px;margin-top:18px;color:var(--mute-on-black)}
+
+/* output */
+.ways{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:40px}
+@media (max-width:820px){.ways{grid-template-columns:1fr}}
+.way{border:1px solid var(--rule-on-black);padding:32px 28px;min-width:0}
+.way .k{font-family:var(--cond);font-weight:600;color:var(--orange);letter-spacing:.14em;font-size:13px;text-transform:uppercase}
+.way h3{font-size:clamp(40px,4.5vw,64px);margin-top:10px}
+.way p{margin-top:14px;max-width:30em;color:var(--mute-on-black)}
+.way ul{margin:18px 0 0;padding:0;list-style:none;display:flex;flex-wrap:wrap;gap:8px}
+.way li{font-family:var(--cond);font-weight:600;font-size:14px;letter-spacing:.06em;text-transform:uppercase;border:1px solid var(--rule-on-black);padding:6px 10px}
+
+/* team */
+.people{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:40px}
+@media (max-width:820px){.people{grid-template-columns:1fr}}
+.person{min-width:0;border-top:3px solid var(--ink-on-white);padding-top:18px}
+.person h3{font-size:clamp(30px,2.6vw,38px)}
+.person .role{font-family:var(--cond);font-weight:600;letter-spacing:.1em;text-transform:uppercase;font-size:13px;color:var(--orange);margin-top:8px}
+.person p{margin-top:12px;font-size:15px;color:var(--mute-on-white);max-width:28em}
+.layers{margin-top:28px;padding-top:28px;border-top:1px solid var(--rule-on-white);display:grid;grid-template-columns:5fr 7fr;gap:36px;align-items:center}
+@media (max-width:820px){.layers{grid-template-columns:1fr}}
+.ring{display:flex;flex-wrap:wrap;gap:8px}
+.ring span{font-family:var(--cond);font-weight:600;font-size:14px;letter-spacing:.06em;text-transform:uppercase;border:1px solid var(--rule-on-white);padding:6px 10px}
+
+/* brand line under the work */
+.brandline{display:flex;flex-wrap:wrap;gap:8px 22px;margin-top:48px;padding-top:22px;border-top:1px solid var(--rule-on-black);font-family:var(--cond);font-weight:600;letter-spacing:.1em;text-transform:uppercase;font-size:13px;color:var(--mute-on-black)}
+.brandline .lbl{color:var(--orange);flex-basis:100%}
+/* brands */
+.brands{display:flex;flex-wrap:wrap;gap:10px 28px;margin-top:32px;font-family:var(--cond);font-weight:600;letter-spacing:.1em;text-transform:uppercase;font-size:15px;color:var(--mute-on-black)}
+
+/* next: two doors, one for a brief and one for an idea */
+.doors{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:40px}
+@media (max-width:820px){.doors{grid-template-columns:1fr}}
+.door{display:flex;flex-direction:column;gap:12px;border:2px solid var(--ink-on-white);padding:32px 28px;min-width:0;text-decoration:none;color:var(--ink-on-white);transition:background .3s,color .3s}
+.door:hover,.door:focus-visible{background:var(--orange);color:var(--ink-on-black);outline:none;border-color:var(--orange)}
+@media (prefers-reduced-motion:reduce){.door{transition:none}}
+.door .k{font-family:var(--cond);font-weight:600;letter-spacing:.14em;font-size:13px;text-transform:uppercase;color:var(--orange)}
+.door:hover .k,.door:focus-visible .k{color:inherit}
+.door h3{font-size:clamp(40px,4.5vw,64px)}
+.door p{font-size:16px;max-width:28em;opacity:.85}
+.door .arrow{margin-top:auto;padding-top:14px;font-family:var(--cond);font-weight:600;letter-spacing:.14em;font-size:13px;text-transform:uppercase;border-top:1px solid currentColor;align-self:flex-start}
+
+/* contact */
+.contact{display:grid;grid-template-columns:7fr 5fr;gap:40px;align-items:end}
+@media (max-width:820px){.contact{grid-template-columns:1fr}}
+.contact .mail{font-family:var(--display);font-size:clamp(28px,3.4vw,48px);user-select:all;word-break:break-all}
+.contact .small{font-family:var(--cond);font-weight:600;letter-spacing:.12em;text-transform:uppercase;font-size:13px;margin-top:14px}
+.foot{padding-left:var(--gutter-l);padding-right:var(--gutter-r);padding-block:22px;background:var(--black);border-top:1px solid var(--rule-on-black)}
+.foot .wrap{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;font-family:var(--cond);font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--mute-on-black)}
+.foot img{height:26px;width:auto}
+</style>
+
+<nav class="nav" aria-label="Main">
+  <div class="wrap">
+    <a href="#top" aria-label="Mark, home"><img src="img/mark-logo-white.png" alt="Mark"></a>
+    <ul>
+      <li><a href="#work">Work</a></li>
+      <li><a href="#thinking">Thinking</a></li>
+      <li><a href="#manifesto">Manifesto</a></li>
+      <li><a href="#team">Team</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="left">
+    <div class="logobox"><img src="img/mark-logo.png" alt="Mark" class="herologo"></div>
+    <p class="claim">The creative hub for the new renaissance of thought.</p>
+  </div>
+</header>
+
+<section class="band black" id="work">
+  <div class="wrap">
+    <p class="eyebrow">The work</p>
+    <h2 class="h-xl">Ideas that became campaigns, brands and companies.</h2>
+    <div class="grid">
+      <a class="case" href="https://youtu.be/LLPRJ1eNOVA" data-yt="LLPRJ1eNOVA" target="_blank" rel="noopener">
+        <div class="pic"><img src="img/case-field.jpg" alt="FC Barcelona women's team celebrating a goal; caption: 1. FC Barcelona, 212 M"><span class="play" aria-hidden="true">Watch case</span></div>
+        <div class="meta">
+          <div class="client">FC Barcelona · Outside-In</div>
+          <div class="title">The Field Symbol</div>
+          <p class="fact">More than 215 million interactions. World attendance record for a women's match, twice.</p>
+        </div>
+      </a>
+      <a class="case" href="https://youtu.be/UCOwGKMniNs" data-yt="UCOwGKMniNs" target="_blank" rel="noopener">
+        <div class="pic"><img src="img/case-makakooo.jpg" style="object-position:right center" alt="Cafu in a white Makakooo hoodie in front of a graffiti wall, with the line Dress for change"><span class="play" aria-hidden="true">Watch case</span></div>
+        <div class="meta">
+          <div class="client">Own brand · Inside-Out</div>
+          <div class="title">Makakooo</div>
+          <p class="fact">An anti-racist clothing brand, born in the hub.</p>
+        </div>
+      </a>
+      <a class="case" href="https://youtu.be/RosZnZWxy1Q" data-yt="RosZnZWxy1Q" target="_blank" rel="noopener">
+        <div class="pic"><img src="img/case-plates.jpg" alt="Thirty plates and cups, each designed by a different artist"><span class="play" aria-hidden="true">Watch case</span></div>
+        <div class="meta">
+          <div class="client">Acción contra el Hambre · Outside-In</div>
+          <div class="title">Tableware Project</div>
+          <p class="fact">133 million reach. +124 % mentions. Sold at Fnac at €600 a piece for the fight against hunger.</p>
+        </div>
+      </a>
+      <a class="case" href="https://youtu.be/jML1xgApcSY" data-yt="jML1xgApcSY" target="_blank" rel="noopener">
+        <div class="pic"><img src="img/case-olay.jpg" alt="A grey-haired woman in red and yellow sunglasses dancing with her arms up, another dancer behind her"><span class="play" aria-hidden="true">Watch case</span></div>
+        <div class="meta">
+          <div class="client">Olay · Outside-In</div>
+          <div class="title">WellAging</div>
+          <p class="fact">100 women aged 60 to 90 dancing in Callao to launch Olay's new claim: WellAging.</p>
+        </div>
+      </a>
+      <a class="case" href="https://youtu.be/IOVmCty2CFs" data-yt="IOVmCty2CFs" target="_blank" rel="noopener">
+        <div class="pic"><img src="img/case-bus.jpg" alt="Pedri with a spray can in front of the graffiti-covered FC Barcelona team bus"><span class="play" aria-hidden="true">Watch case</span></div>
+        <div class="meta">
+          <div class="client">FC Barcelona · Outside-In</div>
+          <div class="title">The Dream Bus</div>
+          <p class="fact">The first official team bus designed by the fans. €40 M in earned media.</p>
+        </div>
+      </a>
+      <a class="case" href="https://youtu.be/OxAdJ473syQ" data-yt="OxAdJ473syQ" target="_blank" rel="noopener">
+        <div class="pic"><img src="img/case-dazn.jpg" alt="Ronaldo Nazário with a DAZN microphone pitchside: Soccer is a social tool"><span class="play" aria-hidden="true">Watch case</span></div>
+        <div class="meta">
+          <div class="client">DAZN · Outside-In</div>
+          <div class="title">Madrid Loves Madrid</div>
+          <p class="fact">Reach of 932 million unique users. +5 % spontaneous brand awareness.</p>
+        </div>
+      </a>
+    </div>
+    <!-- Pendiente: enlace a la lista de casos en YouTube cuando el canal esté listo: <a class="more" href="URL" target="_blank" rel="noopener">Watch all cases on YouTube ↗</a> -->
+    <div class="brandline">
+      <span class="lbl">Brands we have worked for</span>
+      <span>FC Barcelona</span><span>DAZN</span><span>Olay</span><span>P&amp;G</span><span>Acción contra el Hambre</span><span>ABInBev</span><span>Carrefour</span><span>Prisa</span><span>Los 40</span><span>IAB</span><span>Fundació Barça</span><span>Club Colombia</span><span>Mirringo</span><span>Nutresa</span><span>Deoleo</span><span>Litteral</span><span>Poker</span><span>Ringo</span><span>Brilla</span><span>Bios</span>
+    </div>
+  </div>
+</section>
+
+<section class="band white" id="team">
+  <div class="wrap">
+    <p class="eyebrow">Who we are</p>
+    <h2 class="h-xl">Senior core team &amp; wide network.</h2>
+    <div class="people">
+      <div class="person">
+        <h3>Mauricio Rocha Barreto</h3>
+        <div class="role">Partner</div>
+        <p>Former Chief Creative Officer, Young &amp; Rubicam Madrid, and member of its Global Creative Board. Over 650 awards, including 42 Cannes Lions. Cannes jury member twice.</p>
+      </div>
+      <div class="person">
+        <h3>Eva Santos Bouzas</h3>
+        <div class="role">Partner</div>
+        <p>Former Global Chief Creative Officer of Proximity Worldwide, leading 22 offices. Four times on Forbes' list of the 100 most creative people in business. Cannes jury member four times.</p>
+      </div>
+      <div class="person">
+        <h3>Olivier Vallecillo</h3>
+        <div class="role">Advisor</div>
+        <p>Former CEO of Newlink Spain and founder of Globally, one of Spain's most influential communication consultancies. Trustee of Fundación Laureus Spain.</p>
+      </div>
+    </div>
+    <div class="layers">
+      <div>
+        <h3 class="h-m">Team Layers Model</h3>
+        <p class="mute" style="margin-top:12px;max-width:26em">A network of collaborators from different disciplines, activated for each project.</p>
+      </div>
+      <div class="ring">
+        <span>AI creative experts</span><span>Creative technologists</span><span>Cultural curators</span><span>Filmmakers</span><span>Artists</span><span>Social activists</span><span>Photographers</span><span>Designers</span><span>Screenwriters</span><span>Content creators</span><span>Project managers</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band black" id="output">
+  <div class="wrap">
+    <p class="eyebrow">Our output</p>
+    <h2 class="h-l">Two ways of working.</h2>
+    <div class="ways">
+      <div class="way">
+        <div class="k">Outside-In</div>
+        <h3>Ideas for brands and companies</h3>
+        <ul><li>FC Barcelona</li><li>DAZN</li><li>Olay</li><li>Acción contra el Hambre</li><li>Mirringo</li></ul>
+      </div>
+      <div class="way">
+        <div class="k">Inside-Out</div>
+        <h3>Our own IP</h3>
+        <ul><li>Makakooo</li><li>TheNineteen</li><li>Worst Better World</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band white" id="thinking">
+  <div class="wrap">
+    <p class="eyebrow">How we think</p>
+    <h2 class="h-xl">The Re-Human Side</h2>
+    <div class="fw" role="list" aria-label="The Re-Human Side, six steps">
+      <div class="orbit" aria-hidden="true"></div>
+      <div class="core" aria-hidden="true">Re-Human<br>Side</div>
+      <div class="node n1" role="listitem"><span class="n">01</span>Go back to the beginning</div>
+      <div class="node n2" role="listitem"><span class="n">02</span>The world belongs to people</div>
+      <div class="node n3" role="listitem"><span class="n">03</span>Are you relevant?</div>
+      <div class="node n4" role="listitem"><span class="n">04</span>Maximum viable solution</div>
+      <div class="node n5" role="listitem"><span class="n">05</span>The dream team</div>
+      <div class="node n6" role="listitem"><span class="n">06</span>Happy revenue</div>
+    </div>
+  </div>
+</section>
+
+<section class="band black" id="context" style="padding-block:clamp(56px,9vw,120px) clamp(40px,6vw,80px)">
+  <div class="wrap">
+    <blockquote class="quote" style="margin:0;max-width:none;font-size:clamp(34px,5vw,72px);color:var(--orange)">“AI is likely to be either the best or worst thing to happen to humanity.”<cite style="color:var(--mute-on-black)">Stephen Hawking</cite></blockquote>
+  </div>
+</section>
+
+<section class="band white" id="manifesto">
+  <div class="wrap">
+    <p class="eyebrow">Manifesto</p>
+    <h2 class="h-l">The current disruption has generated a blank canvas.</h2>
+    <div class="manifesto">
+      <p>In Mark, ideas are at the core: born free, with the ambition to grow into new brands, companies, or impactful collaborations.</p>
+      <p>Our purpose is to <strong>transcend</strong> and generate <strong>relevance</strong>: to create references that matter today and leave a <strong>legacy</strong> for tomorrow.</p>
+      <p>Technology is part of our core, but always led by thought. Because we truly believe AI needs <strong>bold human thought</strong> to become a force for progress, not regression.</p>
+      <p>Profit is not the goal, but the natural outcome of thinking and creating on a grand scale, with meaning and humanity.</p>
+    </div>
+  </div>
+</section>
+
+<section class="band black" id="contact">
+  <div class="wrap contact">
+    <blockquote class="quote" style="margin:0">“They did not know it was impossible, so they did it.”<cite>Mark Twain</cite></blockquote>
+    <div>
+      <p class="eyebrow" style="margin-bottom:10px">Let's talk</p>
+      <p class="mail">hello@markthehub.com</p>
+      <p class="small mute">Madrid · Barcelona</p>
+    </div>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="wrap">
+    <img src="img/mark-k-white.png" alt="">
+    <span>© Mark · markthehub.com</span>
+  </div>
+</footer>
+<div class="lb" id="lb" hidden>
+  <button class="close" id="lbclose" type="button">Close ✕</button>
+  <div class="frame" id="lbframe"></div>
+</div>
+<script>
+(function(){
+  var lb=document.getElementById('lb'),fr=document.getElementById('lbframe'),cl=document.getElementById('lbclose');
+  function open(id){
+    fr.innerHTML='<iframe src="https://www.youtube-nocookie.com/embed/'+id+'?autoplay=1&rel=0&modestbranding=1" title="Case video" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>';
+    lb.hidden=false;document.body.style.overflow='hidden';cl.focus();
+  }
+  function close(){lb.hidden=true;fr.innerHTML='';document.body.style.overflow='';}
+  document.querySelectorAll('.case[data-yt]').forEach(function(a){
+    a.addEventListener('click',function(e){
+      if(e.metaKey||e.ctrlKey||/claude\.ai$/.test(location.hostname))return; e.preventDefault(); open(a.getAttribute('data-yt'));
+    });
+  });
+  cl.addEventListener('click',close);
+  lb.addEventListener('click',function(e){if(e.target===lb)close();});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!lb.hidden)close();});
+})();
+</script>
+
